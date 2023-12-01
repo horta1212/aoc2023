@@ -64,7 +64,7 @@ def day1_p2():
 
 import bryces_utils as bu
 with bu.Timer('Day1_p1'):
-    day1_p1()
+    day1_p1
 with bu.Timer('Day1_p2'):
-    day1_p2()
+    day1_p2
 

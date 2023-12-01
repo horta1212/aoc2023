@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python
 
 import argparse
@@ -62,6 +61,9 @@ def day1(translate_dict={' ':' '}):
         total+=int(item)
     return(total)
 
-print("P1: ", day1())
-print("P2: ", day1(translate_dict)) 
+import bryces_utils as bu
+with bu.Timer('P1'):
+    print("P1: ", day1())
+with bu.Timer('P2'):
+    print("P2: ", day1(translate_dict)) 
 
