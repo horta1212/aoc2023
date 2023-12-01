@@ -28,10 +28,10 @@ def read_data(caller, filename=None):
     lines = [line.strip('\n\r') for line in lines]
     return lines
 
-data = read_data(__file__, "d1_data_preprocessed.txt")
+data = read_data(__file__, "d1_data.txt")
 
 """
-# These were the vim commands used to pre-process the data for p2:
+# These are the equivalent vim commands used to pre-process the data for p2:
 
 :%s/one/o1e/g  
 :%s/two/t2o/g
@@ -48,5 +48,20 @@ data = read_data(__file__, "d1_data_preprocessed.txt")
 
 
 """
-print("P2: ", sum(int(item) for item in data))
+
+translate_dict = {'one':'o1e','two':'t2o','three':'t3e','four':'f4r','five':'f5e','six':'s6x','seven':'s7n','eight':'e8t','nine':'n9e'}
+def day1(translate_dict={' ':' '}):
+    total=0
+    for item in data:
+        for key, replace in translate_dict.items():
+            item = item.replace(key,replace)
+        item = ''.join(char for char in item if char.isnumeric())
+        if len(item)==1:
+            item = item + item
+        item = item[0]+item[-1]
+        total+=int(item)
+    return(total)
+
+print("P1: ", day1())
+print("P2: ", day1(translate_dict)) 
 

@@ -28,9 +28,16 @@ def read_data(caller, filename=None):
     lines = [line.strip('\n\r') for line in lines]
     return lines
 
-data = read_data(__file__, "d1_data_preprocessed.txt")
+data_p1 = read_data(__file__, "d1_p1_data_preprocessed.txt")
+data_p2 = read_data(__file__, "d1_p2_data_preprocessed.txt")
 
 """
+# These were the vim commands used to pre-process the data for p1:
+
+:%s/[a-zA-Z]//g
+:%s/^\d$/\0\0/
+:%s/\(.\).*\(.\)/\1\2
+
 # These were the vim commands used to pre-process the data for p2:
 
 :%s/one/o1e/g  
@@ -48,5 +55,6 @@ data = read_data(__file__, "d1_data_preprocessed.txt")
 
 
 """
-print("P2: ", sum(int(item) for item in data))
+print("P1: ", sum(int(item) for item in data_p1))
+print("P2: ", sum(int(item) for item in data_p2))
 
