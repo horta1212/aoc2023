@@ -191,6 +191,7 @@ print("P1:", total)
 from collections import defaultdict
 
 total=0
+star='*'
 star_location_dict=defaultdict(list)
 for r,row in enumerate(inputs):
     current_num=''
@@ -200,18 +201,18 @@ for r,row in enumerate(inputs):
         elif len(current_num) != 0:
             width = len(current_num)
 
-            if row[c] == "*":
+            if row[c] in star:
                 star_location_dict[str(r)+'.'+str(c)].append(int(current_num))
 
-            if row[c-width-1] == "*":
+            if row[c-width-1] in star:
                 star_location_dict[str(r)+'.'+str(c-width-1)].append(int(current_num))
 
             for local_c, char in enumerate(inputs[r-1][c-width-1:c+1]):
-                if char == '*':
+                if char in star:
                     star_location_dict[str(r-1)+'.'+str(c-width-1+local_c)].append(int(current_num))
 
             for local_c, char in enumerate(inputs[r+1][c-width-1:c+1]):
-                if char == '*':
+                if char in star:
                     star_location_dict[str(r+1)+'.'+str(c-width-1+local_c)].append(int(current_num))
 
             current_num=''
