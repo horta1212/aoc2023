@@ -101,6 +101,14 @@ inputs=[
 "100:10b,2r;7g,20b,9r;8r,6g,2b",
 ]
 
+''' 
+# Vim data preprocessing:
+:%s/red/r/g
+:%s/blue/b/g
+:%s/green/g/g
+:%s/Game //
+:%s/ //g
+'''
 
 max_r = 12
 max_g = 13
@@ -110,18 +118,16 @@ running_total_p2  = 0
 for row in inputs:
     game_id, games_str = row.split(':')
     games = games_str.split(';')
-    reds = []
-    blues=[]
-    greens=[]
+    reds, blues, greens = [], [], []
     for game in games:
-        items = game.split(',')
-        for item in items:
-            if item.count('r') !=0:
-                reds.append(int(item.replace('r','')))
-            if item.count('b') !=0:
-                blues.append(int(item.replace('b','')))
-            if item.count('g') !=0:
-                greens.append(int(item.replace('g','')))
+        cubes = game.split(',')
+        for cube in cubes:
+            if cube.count('r') !=0:
+                reds.append(int(cube.replace('r','')))
+            if cube.count('b') !=0:
+                blues.append(int(cube.replace('b','')))
+            if cube.count('g') !=0:
+                greens.append(int(cube.replace('g','')))
     
     if max(reds) <= max_r and max(blues) <= max_b and max(greens) <= max_g:
         running_total_ids+=int(game_id)

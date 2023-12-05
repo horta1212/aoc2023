@@ -122,11 +122,11 @@ for row in inputs:
     for game in games:
         cubes = game.split(',')
         for cube in cubes:
-            if cube.count('r') !=0:
+            if 'r' in cube:
                 reds.append(int(cube.replace('r','')))
-            if cube.count('b') !=0:
+            if 'b' in cube:
                 blues.append(int(cube.replace('b','')))
-            if cube.count('g') !=0:
+            if 'g' in cube:
                 greens.append(int(cube.replace('g','')))
     
     if max(reds) <= max_r and max(blues) <= max_b and max(greens) <= max_g:
