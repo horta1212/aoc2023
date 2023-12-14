@@ -101,6 +101,7 @@ inputs=[
 '..O.......#OO.OOO......#O#.O.#O.O......O..O.O.O.O.....#.###O.O#OO.#O.#O...O...OO##O#.........O#.....',
 ]
 '''
+#P1
 moved = True
 while moved == True:
     moved = False
@@ -232,16 +233,15 @@ def p2():
                 print(key, values)
         
     print(weights)
-    #2612
+    #2612 numbers hitting same weight values (showed offset of 26)
     #2586
-    #90539 too low
     return(weights)
 
 # from weight list, determine regular pattern (repeats after 26)
 # then take 1,000,000,000 % 26 = 12
 # Then take a high enough number where it's repeating and add 12 - 1 from the weight index
-# I used 2611. I have no idea why I need to subtract 1, but that's what worked on the example.
-# And apparently it worked on the puzzle.
+# I used 2611. 
+# You only add 11 because the cycle numbers I used are 0 indexed rather than 1. 
 
 
 
