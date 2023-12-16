@@ -198,34 +198,16 @@ def p2():
     board=inputs
     weights = []
     weight_dict=defaultdict(list)
-    #for row in board:
-    #    print(row)
-    #print()
     for cycle in range(3000):
         for i in range(4):
-            #print('drop_north')
-               
             board = tuple(board)
-            #for row in board:
-            #    print(row)
             board = drop_north(board)
-
-            #print('cycle, i', cycle, i)
-            #for row in board:
-            #    print(row)
-            #print()
-            #print('rotate')
             board = tuple(board)
             board = rotate_board_cw(board)
-            #for row in board:
-            #    print(row)
-            #print()
         board = tuple(board)
         weight = calc_weight(board)
         if weight in weights:
             weight_dict[weight].append(cycle)
-        #    print("cycle", cycle)
-        #    print('weight',weight)
         weights.append(weight)
         if cycle % 100 == 0:
             print('cycle',cycle)
