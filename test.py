@@ -38,8 +38,8 @@ def prime_factors(num):
     print(factor_list)
     return(factor_list)
 
-with Timer('sqrt_factors'):
-    prime_factors(1e24)
+#with Timer('sqrt_factors'):
+#    prime_factors(1e24)
 
 def prime_numbers(num):
     prime_list=[2]
@@ -56,6 +56,83 @@ def prime_numbers(num):
             print(prime_list)
     return(prime_list)
 
+from copy import deepcopy
+def deep_copy(x):
+    return(deepcopy(x))
+
+def list_copy(x):
+    return([i for i in x])
+
+
+x = [0,1,2,3,4,5,6,7,8,0]
+with Timer('deepcopy'):
+    for i in range(10000):
+        y = deep_copy(x)
+
+with Timer('list_copy'):
+    for i in range(10000):
+        y = list_copy(x)
+
+print()
+
+import day17.d17 as d17
+from importlib import reload
+reload(d17)
+
+loops = 1000000
+'''
+with Timer('shove'):
+    for i in range(loops):
+        x = d17.shove(x, x[-1])
+    print(x)
+    
+with Timer('shove2'):
+    for i in range(loops):
+        x = d17.shove2(x, x[-1])
+    print(x)
+
+with Timer('shove3'):
+    for i in range(loops):
+        x = d17.shove3(x, x[-1])
+    print(x)
+
+def test_shove4():
+    x = [0,1,2,3,4,5,6,7,8,0]
+    for i in range(loops):
+        x = d17.shove4(x, x[x[-1]])
+    print(x)
+
+with Timer('shove4'):
+    test_shove4()
+
+
+def test_shove_len9():
+    x = [0,1,2,3,4,5,6,7,8,0]
+    for i in range(loops):
+        x = d17.shove_len9(x, x[x[-1]])
+    print(x)
+
+with Timer('shove_len9'):
+    test_shove_len9()
+'''
+
+
+x=dict()
+with Timer('Create entries'):
+    for i in range(loops,-1,-1):
+        x[i]=i
+
+null = 0
+with Timer('Read entries'):
+    for i in range(loops):
+        null += x[i]
+
+for i in list(x.keys())[0:10]:
+    print(i)
+
+import sys
+print('dict_size: ', int(sys.getsizeof(x)/1e6), 'e6',sep='')
+print(sys.version)
         
 
         
